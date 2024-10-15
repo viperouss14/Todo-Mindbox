@@ -17,7 +17,7 @@ interface TodoListProps {
 const Todolist: FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) => (
   <VStack minBlockSize={200} justify="center" align="stretch" spacing={5}>
     {todos.map((todo) => (
-      <HStack spacing={10} key={todo.id}>
+      <HStack spacing={10} key={todo.id} >
         <Checkbox
           isChecked={todo.completed}
           colorScheme="green"

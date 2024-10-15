@@ -11,7 +11,6 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import "./App.css";
 import NewTodo from "./components/NewTodo";
 import { useEffect, useState } from "react";
 import Todolist, { Todo } from "./components/TodoList";
@@ -19,7 +18,7 @@ import TodoFilter from "./components/TodoFilter";
 import TodoLeft from "./components/TodoLeft";
 import ClearCompleted from "./components/ClearCompleted";
 
-function App() {
+const App: React.FC = () => {
   const initialTodos: Todo[] = [
     { id: 1, text: "Тестовое задание", completed: false },
     { id: 2, text: "Прекрасный код", completed: true },
@@ -77,8 +76,7 @@ function App() {
 
   const bgColor = useColorModeValue("gray.50", "gray.900");
   const textColor = useColorModeValue("gray.800", "white");
-  const footerColor = useColorModeValue("gray.500", "gray.500");
-
+  const footerColor = useColorModeValue("gray.500", "gray.600");
   const flexDirection = useBreakpointValue<"column" | "row">({
     base: "column",
     sm: "row",
@@ -134,18 +132,13 @@ function App() {
           </Flex>
         </VStack>
       </Container>
-      <Box
-        as="footer"
-        w="100%"
-        py={4}
-        bg={useColorModeValue("gray.100", "gray.800")}
-        textAlign="center"
-      >
-        <Text fontSize="sm" color={footerColor}>
+      <Box as="footer" w="100%" py={4} bg={footerColor} textAlign="center">
+        <Text fontSize="sm">
           Created with ❤️ by{" "}
           <Link
             href="https://github.com/viperouss14?tab=repositories"
             color="teal.500"
+            target="_blank"
           >
             Viktor
           </Link>
@@ -153,6 +146,6 @@ function App() {
       </Box>
     </Box>
   );
-}
+};
 
 export default App;
