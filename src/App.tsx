@@ -112,7 +112,7 @@ function App() {
             todos
           </Heading>
           <NewTodo AddTodo={addTodo} />
-          <Box w="100%" flex="1" overflowY="auto" mb={4}>
+          <Box w="70%" flex="1" overflowY="auto" mb={4}>
             <Todolist
               todos={filteredTodos}
               toggleTodo={toggleTodo}

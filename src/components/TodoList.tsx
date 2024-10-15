@@ -25,6 +25,9 @@ const Todolist: FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) => (
         />
         <Text
           flex={1}
+          overflow={"hidden"}
+          whiteSpace={"nowrap"}
+          textOverflow={"ellipsis"}
           textDecoration={todo.completed ? "line-through" : "none"}
         >
           {todo.text}
