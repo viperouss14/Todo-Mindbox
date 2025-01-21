@@ -17,11 +17,15 @@ interface TodoListProps {
 const Todolist: FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) => (
   <VStack minBlockSize={200} justify="center" align="stretch" spacing={5}>
     {todos.map((todo) => (
-      <HStack spacing={10} key={todo.id} >
+      <HStack spacing={10} key={todo.id}>
         <Checkbox
           isChecked={todo.completed}
           colorScheme="green"
+          size="lg"
           onChange={() => toggleTodo(todo.id)}
+          sx={{
+            "& > span:first-of-type": { borderRadius: "50%" },
+          }}
         />
         <Text
           flex={1}
@@ -29,14 +33,18 @@ const Todolist: FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) => (
           whiteSpace={"nowrap"}
           textOverflow={"ellipsis"}
           textDecoration={todo.completed ? "line-through" : "none"}
+          color={todo.completed ? "gray.400" : "inherit"}
+          onClick={() => toggleTodo(todo.id)}
+          _hover={{ cursor: "pointer" }}
         >
           {todo.text}
         </Text>
         <IconButton
-          size="xs"
+          size="s"
           aria-label="Delete todo"
           icon={<DeleteIcon />}
           onClick={() => deleteTodo(todo.id)}
+          _hover={{ color: "pink.500" }}
         />
       </HStack>
     ))}

@@ -1,5 +1,13 @@
 import { FC, useState, FormEvent } from "react";
-import { FormControl, FormLabel, Input, Button, Box } from "@chakra-ui/react";
+import { ChevronDownIcon } from '@chakra-ui/icons'
+import {
+  FormControl,
+  // FormLabel,
+  Input,
+  Button,
+  Box,
+  HStack,
+} from "@chakra-ui/react";
 
 interface NewTodoProps {
   AddTodo: (todo: string) => void;
@@ -19,16 +27,36 @@ const NewTodo: FC<NewTodoProps> = ({ AddTodo }) => {
   return (
     <Box as="form" onSubmit={handleSubmit}>
       <FormControl>
-        <FormLabel>Create new todo</FormLabel>
-        <Input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Enter new todo"
-        />
-        <Button type="submit" mt={4} colorScheme="teal">
-          Add Todo
-        </Button>
+        {/* <FormLabel>Create new todo</FormLabel> */}
+        <HStack justify="center" align="center" spacing={4}>
+          <Box position="relative">
+            {" "}
+            <Input
+              type="text"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+              placeholder="What needs to be done?"
+              sx={{
+                "::placeholder": { fontStyle: "italic" },
+                paddingLeft: "25px",
+              }}
+            />{" "}
+            <Box
+              position="absolute"
+              left="10px"
+              top="50%"
+              transform="translateY(-50%)"
+              pointerEvents="none"
+            >
+              {" "}
+              <ChevronDownIcon />
+              {" "}
+            </Box>{" "}
+          </Box>
+          <Button type="submit" colorScheme="teal">
+            Add Todo
+          </Button>
+        </HStack>
       </FormControl>
     </Box>
   );

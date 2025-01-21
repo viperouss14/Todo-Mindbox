@@ -20,9 +20,9 @@ import ClearCompleted from "./components/ClearCompleted";
 
 const App: React.FC = () => {
   const initialTodos: Todo[] = [
-    { id: 1, text: "Тестовое задание", completed: false },
+    { id: 1, text: "Тестовое задание", completed: true },
     { id: 2, text: "Прекрасный код", completed: true },
-    { id: 3, text: "Покрытие тестами", completed: false },
+    { id: 3, text: "Покрытие тестами", completed: true },
   ];
 
   const [todos, SetTodos] = useState<Todo[]>(() => {
@@ -43,7 +43,7 @@ const App: React.FC = () => {
       completed: false,
     };
 
-    SetTodos([...todos, newTodo]);
+    SetTodos([newTodo, ...todos]);
   };
 
   const toggleTodo = (id: number) => {
@@ -101,16 +101,17 @@ const App: React.FC = () => {
         <VStack spacing={4} flex="1" justify="flex-start">
           <Heading
             as="h1"
-            size="xl"
+            size="3xl"
             textAlign="center"
-            fontWeight="light"
+            fontWeight="100"
             letterSpacing="wide"
             mb={4}
+            color="#be8273"
           >
             todos
           </Heading>
           <NewTodo AddTodo={addTodo} />
-          <Box w="70%" flex="1" overflowY="auto" mb={4}>
+          <Box w="70%" overflowY="auto" mb={4}>
             <Todolist
               todos={filteredTodos}
               toggleTodo={toggleTodo}
