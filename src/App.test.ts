@@ -8,7 +8,7 @@ vi.mock('@chakra-ui/react', async (importOriginal) => {
   const actual = await importOriginal()
   return Object.assign({}, actual, {
     useColorModeValue: (light: string, dark: string) => light || dark,
-    useBreakpointValue: (values: { [key: string]: any }) => values.base,
+    useBreakpointValue: (values: { [key: string]: string | number }) => values.base,
   })
 })
 
@@ -21,7 +21,7 @@ describe('Todo App', () => {
 
   it('adds a new todo', async () => {
     render((React.createElement(AppComponent)))
-    const input = screen.getByPlaceholderText('Enter new todo')
+    const input = screen.getByPlaceholderText('What needs to be done?')
     fireEvent.change(input, { target: { value: 'New Todo' } })
     const addButton = screen.getByText('Add Todo')
     fireEvent.click(addButton)

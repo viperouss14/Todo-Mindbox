@@ -20,9 +20,9 @@ import ClearCompleted from "./components/ClearCompleted";
 
 const App: React.FC = () => {
   const initialTodos: Todo[] = [
-    { id: 1, text: "Тестовое задание", completed: true },
+    { id: 1, text: "Тестовое задание", completed: false },
     { id: 2, text: "Прекрасный код", completed: true },
-    { id: 3, text: "Покрытие тестами", completed: true },
+    { id: 3, text: "Покрытие тестами", completed: false },
   ];
 
   const [todos, SetTodos] = useState<Todo[]>(() => {
